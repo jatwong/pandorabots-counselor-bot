@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+  
+<category>
+    <pattern>*</pattern>
+    <template>
+        I'm sorry, I don't understand you're response. I can only help you with career advice. Would you like that?
+        <reply>
+            <text>Yes</text>
+            <postback>YES</postback>
+        </reply>
+        <reply>
+            <text>No</text>
+            <postback>BYE</postback>
+        </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>Hello</pattern>
+    <template>
+        Welcome to Career Counseling! I'm <bot name="name"/>, and I will be helping you with career advice. Are you ready?
+        <reply>
+            <text>Yes</text>
+            <postback>MAJOR</postback>
+        </reply>
+        <reply>
+            <text>No</text>
+            <postback>BYE</postback>
+        </reply>
+    </template>
+</category>
+<category>
+    <pattern>MAJOR</pattern>
+    <template>
+        Before we begin, are you a Computer Science student?
+        <reply>
+            <text>Yes</text>
+            <postback>YES</postback>
+        </reply>
+        <reply>
+            <text>No</text>
+            <postback>NO</postback>
+        </reply>
+    </template>
+</category>
+
+<category><pattern>YES</pattern><template>Let's get started! First of all, do you have a preference for what kind of projects you'd like to work on?
+<reply>
+    <text>Data and infrastructure</text>
+    <postback>DATA</postback>
+</reply>
+<reply>
+    <text>User-facing products</text>
+    <postback>PRODUCTS</postback>
+</reply></template></category>
+
+<category>
+    <pattern>DATA</pattern>
+    <template>
+        <think><set name="preference">data and infrastructure</set></think>
+        <srai>SKILLS</srai>    
+    </template>
+</category>
+
+<category>
+    <pattern>PRODUCTS</pattern>
+    <template>
+        <think><set name="preference">user product</set></think>
+        <srai>SKILLS</srai>    
+    </template>
+</category>
+
+<category>
+    <pattern>SKILLS</pattern>
+    <template>
+        Got it. I'll keep that in mind. What programming languages are you most familiar with?
+        <srai>LANGUAGES</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>LANGUAGES</pattern>
+    <template>
+<reply>
+    <text>Javascript</text>
+    <postback>JAVASCRIPT</postback>
+</reply>
+<reply>
+    <text>Python</text>
+    <postback>PYTHON</postback>
+</reply>
+<reply>
+    <text>SQL</text>
+    <postback>SQL</postback>
+</reply>
+<reply>
+    <text>C++</text>
+    <postback>C plus</postback>
+</reply>
+<reply>
+    <text>Golang</text>
+    <postback>Go</postback>
+</reply>
+<reply>
+    <text>I'm not too familiar with any of these.</text>
+    <postback>NONE</postback>
+</reply></template>
+</category>
+
+<category>
+    <pattern>JAVASCRIPT</pattern>
+    <template>
+        <think><set name="language">Javascript</set></think>
+        <srai>PREFERENCE SPECIFIC</srai>
+    </template>
+</category>
+<category>
+    <pattern>PYTHON</pattern>
+    <template>
+        <think><set name="language">Python</set></think>
+        <srai>PREFERENCE SPECIFIC</srai>
+    </template>
+</category>
+<category>
+    <pattern>SQL</pattern>
+    <template>
+        <think><set name="language">SQL</set></think>
+        <srai>PREFERENCE SPECIFIC</srai>
+    </template>
+</category>
+<category>
+    <pattern>C plus</pattern>
+    <template>
+        <think><set name="language">C++</set></think>
+        <srai>PREFERENCE SPECIFIC</srai>
+    </template>
+</category>
+<category>
+    <pattern>Go</pattern>
+    <template>
+        <think><set name="language">Golang</set></think>
+        <srai>PREFERENCE SPECIFIC</srai>
+    </template>
+</category>
+<category>
+    <pattern>NONE</pattern>
+    <template>
+        <think><set name="language">none</set></think>
+        I can suggest some languages to learn later.
+        <srai>PREFERENCE SPECIFIC</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>PREFERENCE SPECIFIC</pattern>
+    <template>
+        You mentioned you preferred projects that were <get name="preference"/>-focused. Let's break it down some more. Which do you prefer?
+        <condition name="preference">
+            <li value="data and infrastructure">
+                <reply>
+                    <text>Analyzing data</text>
+                    <postback>ANALYZE</postback>
+                </reply>
+                <reply>
+                    <text>Monitoring systems</text>
+                    <postback>MONITOR</postback>
+                </reply>
+            </li>
+            <li value="user product">
+                <reply>
+                    <text>Designing what user sees</text>
+                    <postback>UI</postback>
+                </reply>
+                <reply>
+                    <text>Implementing what users can do</text>
+                    <postback>CODE</postback>
+                </reply>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>ANALYZE</pattern>
+    <template>
+        <think><set name="data">analysis</set></think>
+        <srai>STACK</srai>
+    </template>
+</category>
+<category>
+    <pattern>MONITOR</pattern>
+    <template>
+        <think><set name="data">systems</set></think>
+        <srai>STACK</srai>
+    </template>
+</category>
+<category>
+    <pattern>UI</pattern>
+    <template>
+        <think><set name="product">user interface</set></think>
+        <srai>STACK</srai>
+    </template>
+</category>
+<category>
+    <pattern>CODE</pattern>
+    <template>
+        <think><set name="product">coding</set></think>
+        <srai>CODE SPECIFIC</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CODE SPECIFIC</pattern>
+    <template>
+        Which do you prefer to do?
+        <reply>
+            <text>Implement code</text>
+            <postback>IMPLEMENT</postback>
+        </reply>
+        <reply>
+            <text>Finding bugs</text>
+            <postback>QUALITY</postback>
+        </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>IMPLEMENT</pattern>
+    <template>
+        <think><set name="task">implement</set></think>
+        <srai>STACK</srai>
+    </template>
+</category>
+<category>
+    <pattern>QUALITY</pattern>
+    <template>
+        <think><set name="task">testing</set></think>
+        <srai>STACK</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>STACK</pattern>
+    <template>
+        <condition name="preference">
+            <li value="data and infrastructure">
+                <srai>CHECK DATA PREF</srai>
+            </li>
+            <li value="user product">
+                <srai>CHECK PRODUCT PREF</srai>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>CHECK DATA PREF</pattern>
+    <template>
+        <condition name="data">
+            <li value="analysis">
+                <think><set name="job">Data Scientist</set></think>
+                <srai>JOB</srai>
+            </li>
+            <li value="systems">
+                <think><set name="job">DevOps Engineer</set></think>
+                <srai>JOB</srai>
+            </li>        
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>CHECK PRODUCT PREF</pattern>
+    <template>
+        <condition name="product">
+            <li value="user interface">
+                <think><set name="job">UI UX Designer</set></think>
+                <srai>JOB</srai>
+            </li>
+            <li value="coding">
+                <srai>CHECK CODING PREF</srai>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>CHECK CODING PREF</pattern>
+    <template>
+        <condition name="task">
+            <li value="implement">
+                <think><set name="job">Full Stack Developer</set></think>
+                <srai>JOB</srai>
+            </li>
+            <li value="testing">
+                <think><set name="job">QA Engineer</set></think>
+                <srai>JOB</srai>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>SET LANGUAGE</pattern>
+    <template>
+        <condition name="job">
+            <li value="Full Stack Developer">
+                <think><set name="language">Javascript and Python</set></think>
+            </li>
+            <li value="Data Scientist">
+                <think><set name="language">Python and SQL</set></think>
+            </li>
+            <li value="UI UX Designer">
+                <think><set name="language">Javascript</set></think>
+            </li>
+            <li value="QA Engineer">
+                <think><set name="language">Python</set></think>
+            </li>
+            <li value="DevOps Engineer">
+                <think><set name="language">Golang</set></think>
+            </li>
+        </condition>
+
+    </template>
+</category>
+
+<category>
+    <pattern>JOB</pattern>
+    <template>
+        Based on your answers, it seems that being a <get name="job"/> would be a great fit for you! 
+        <condition name="language">
+            <li value="none">
+                <srai>SET LANGUAGE</srai>
+                I recommend you learn <get name="language"/>.
+            </li>
+        </condition>
+        Would you like to learn more about the role?
+        <reply>
+            <text>Tell me more</text>
+            <postback>LEARN ROLE</postback>
+        </reply>
+        <reply>
+            <text>No thanks</text>
+            <postback>NO ROLE</postback>
+        </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>LEARN ROLE</pattern>
+    <template>
+        <condition name="job">
+            <li value="Full Stack Developer">
+                As a full stack developer, you are proficient in both front-end and back-end development. You are knowledgeable in HTML, CSS, and Javascript 
+                for the front-end, and server-side languages like Python for the back-end. In addition, you are capable of connecting to a database or calling
+                APIs.
+            </li>
+            <li value="Data Scientist">
+                As a data scientist, you organize and analyze complex data, and generate data models that will help companies make informed decisions. 
+                In addition, you are proficient in programming languages like Python and SQL.
+            </li>
+            <li value="UI UX Designer">
+                As a UI/UX designer, you value a user's experience when using the product. You ensure that the final product is user-friendly and aesthetically 
+                pleasing. You think creatively, keeping in mind user-centered design principles, and utilize design tools such as Figma to visualize and 
+                present your ideas to the team.
+            </li>
+            <li value="QA Engineer">
+                As a QA engineer, you have an attention to detail and help developers debug code to ensure quality and functionality of a product. You design 
+                and implement tests to identify any issues before release, and generate reports on your findings. You perform automated and/or manual 
+                testing and utilize testing frameworks.
+            </li>
+            <li value="DevOps Engineer">
+                As a DevOps engineer, you manage the infrastructure so developers can have fast and reliable code deployment. You automate and streamline the 
+                process, setting up deployment pipelines, and monitoring system performance.
+            </li>
+        </condition>
+        <br/><srai>NO ROLE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>NO ROLE</pattern>
+    <template>
+        Would you like to answer the questions differently?
+        <reply>
+            <text>Yes</text>
+            <postback>YES</postback>
+        </reply>
+        <reply>
+            <text>No</text>
+            <postback>BYE</postback>
+        </reply>
+    </template>
+</category>
+
+<category><pattern>NO</pattern><template>Sorry, I can only assist Computer Science students 😓</template></category>
+
+<category>
+    <pattern>* computer science student</pattern>
+    <template>Computer science offers a lot of job opportunities. Would you like advice on career paths?
+    <reply>
+        <text>Yes please</text>
+        <postback>YES</postback>
+    </reply>
+    <reply>
+        <text>No thanks</text>
+        <postback>BYE</postback>
+    </reply>
+    </template>
+</category>
+
+<category><pattern>BYE</pattern><template>Okay, feel free to come back any time if you need career advice. Have a good day!</template></category>
+
+
+<category><pattern>i am * computer science</pattern><template><srai>* computer science student</srai></template></category>
+<category><pattern>i'm * computer science</pattern><template><srai>* computer science student</srai></template></category>
+
+<category><pattern>Hi</pattern><template><srai>HELLO</srai></template></category>
+<category><pattern>Hi *</pattern><template><srai>HELLO</srai></template></category>
+<category><pattern>Yo</pattern><template><srai>HELLO</srai></template></category>
+<category><pattern>Yo *</pattern><template><srai>HELLO</srai></template></category>
+<category><pattern>Hey</pattern><template><srai>HELLO</srai></template></category>
+<category><pattern>Hey *</pattern><template><srai>HELLO</srai></template></category>
+<category><pattern>Wassup</pattern><template><srai>HELLO</srai></template></category>
+<category><pattern>Wassup *</pattern><template><srai>HELLO</srai></template></category>
+
+
+</aiml>
