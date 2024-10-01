@@ -5,7 +5,7 @@ This was a great introduction to AI and chatbots despite it employing predefined
 <br/>
 
 ## Demo
-https://github.com/user-attachments/assets/467fef4a-8274-496f-b5d3-07c6775c0d75
+https://github.com/user-attachments/assets/0aeef2e0-dba8-4b9e-a7fc-5948155ae335
 
 ## Preview of part of the intents tree
 <img width="1290" alt="intents_tree" src="https://github.com/user-attachments/assets/662d139a-5998-4439-a3da-93e1e801c5dd">
